@@ -32,13 +32,28 @@ module.exports = (env, argv) => ({
                     loader: 'babel-loader',
                     options: {
                         presets: [
-                            '@babel/preset-env',
+                            ['@babel/preset-env', {
+                                "targets": {
+                                    "browsers": [
+                                        "last 50 Chrome versions",
+                                        "last 20 Firefox versions",
+                                        "last 20 Safari versions",
+                                        "last 20 iOS versions",
+                                        "last 10 Android version",
+                                        "last 10 ChromeAndroid version",
+                                        "ie 11"
+                                    ]
+                                },
+                                "useBuiltIns": "usage",
+                                "corejs": "3"
+                            }],
                             '@babel/preset-react'
                         ],
                         plugins: [
                             '@babel/plugin-proposal-class-properties',
                             '@babel/plugin-proposal-object-rest-spread'
-                        ]
+                        ],
+                        sourceType: "unambiguous"
                     }
                 }
             },
@@ -150,7 +165,7 @@ module.exports = (env, argv) => ({
         host: '0.0.0.0',
         static: false,
         hot: false,
-        https: true,
+        https: false,
         liveReload: false
     },
     optimization: {
