@@ -6,7 +6,7 @@ const classnames = require('classnames');
 const debounce = require('lodash.debounce');
 const langs = require('langs');
 const { useRouteFocused } = require('stremio-router');
-const { useServices } = require('stremio/services');
+const { useServices, SmartTV } = require('stremio/services');
 const { HorizontalNavBar, Button, useFullscreen, useBinaryState, useToast, useStreamingServer, withCoreSuspender } = require('stremio/common');
 const Icon = require('@stremio/stremio-icons/dom');
 const BufferingLoader = require('./BufferingLoader');
@@ -442,6 +442,7 @@ const Player = ({ urlParams, queryParams }) => {
         };
     }, []);
     React.useLayoutEffect(() => {
+        console.log(SmartTV);
         const onKeyDown = (event) => {
             switch (event.code) {
                 case 'Space': {
@@ -541,6 +542,25 @@ const Player = ({ urlParams, queryParams }) => {
                     break;
                 }
             }
+
+            // if (SmartTV.smartTV !== null) {
+            //     if (SmartTV.smartTV.name === "webOS") {
+            switch (event.keyCode) {
+                case 415: {
+                    if (!subtitlesMenuOpen && !infoMenuOpen && videoState.paused !== null) {
+                        onPlayRequested();
+                    }
+                    break;
+                }
+                case 19: {
+                    if (!subtitlesMenuOpen && !infoMenuOpen && videoState.paused !== null) {
+                        onPauseRequested();
+                    }
+                    break;
+                }
+            }
+            //     }
+            // }
         };
         if (routeFocused) {
             window.addEventListener('keydown', onKeyDown);

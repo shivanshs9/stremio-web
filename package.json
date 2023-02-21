@@ -7,7 +7,7 @@
     "license": "gpl-2.0",
     "scripts": {
         "start": "webpack serve --mode development",
-        "build": "webpack --mode production",
+        "build": "webpack --mode development",
         "test": "jest",
         "lint": "eslint src"
     },
@@ -17,7 +17,7 @@
         "@stremio/stremio-colors": "5.0.1",
         "@stremio/stremio-core-web": "0.44.11",
         "@stremio/stremio-icons": "4.0.0",
-        "@stremio/stremio-video": "0.0.24",
+        "@stremio/stremio-video": "git+https://git@github.com/shivanshs9/stremio-video.git#0ec0ac611bdd42094b4fa3ea292289a74a3c2dbb",
         "a-color-picker": "1.2.1",
         "bowser": "2.11.0",
         "buffer": "6.0.3",

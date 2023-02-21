@@ -217,6 +217,9 @@ module.exports = (env, argv) => ({
                 { from: 'manifest.json', to: `${COMMIT_HASH}/manifest.json` },
             ]
         }),
+        new CopyWebpackPlugin({
+            patterns: [{ from: 'lib', to: `${COMMIT_HASH}/scripts` }]
+        }),
         new MiniCssExtractPlugin({
             filename: `${COMMIT_HASH}/styles/[name].css`
         }),
@@ -228,6 +231,7 @@ module.exports = (env, argv) => ({
             faviconsPath: `${COMMIT_HASH}/favicons`,
             imagesPath: `${COMMIT_HASH}/images`,
             manifestPath: `${COMMIT_HASH}/manifest.json`,
+            scriptsPath: `${COMMIT_HASH}/scripts`
         })
     ].filter(Boolean)
 });
